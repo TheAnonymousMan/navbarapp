@@ -1,0 +1,24 @@
+h1
+{
+    text-align: center;
+}
+
+p
+{
+    text-align: justify;
+}
+
+nav
+{
+    text-align: center;
+}
+
+.pressed
+{
+    background-color: darkgray;
+}
+
+.notpressed
+{
+    background-color: none;
+}
