@@ -30,9 +30,9 @@ class NavBar extends React.Component
         <div className='container'>
           <nav className='navbar'>
             
-            <Link to='/'>
+            <Link to='/' class='link'>
               <div
-                className={(window.location.pathname === '/') ? 'path selected' :'path'}
+                className={(window.location.pathname === '/') ? 'path selected row-md-4' :'path row-md-4'}
                 // window.location.pathname seems to return only the url entered.
                 onClick={this.changeStyle} 
                 // The onClick seems useless, if we remove it, the colour stops changing on clicking.
@@ -42,15 +42,15 @@ class NavBar extends React.Component
                 // Hence, we make a forceful change in the states.
                 > Home </div></Link> |                    
 
-            <Link to='/about'>
+            <Link to='/about' class='link'>
               <div
-                className={(window.location.pathname === '/about') ? 'path selected' :'path'}
+                className={(window.location.pathname === '/about') ? 'path selected row-md-4' :'path row-md-4'}
                 onClick={this.changeStyle}
                 > About </div></Link> | 
 
-            <Link to='/topics'>
+            <Link to='/topics' class='link'>
               <div
-                className={(window.location.pathname === '/topics') ? 'path selected' :'path'}
+                className={(window.location.pathname === '/topics') ? 'path selected row-md-4' :'path row-md-4'}
                 onClick={this.changeStyle} 
                 > Topics </div></Link>
           </nav>

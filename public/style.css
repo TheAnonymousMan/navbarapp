@@ -8,9 +8,10 @@ p
     text-align: justify;
 }
 
-nav
+.link
 {
-    text-align: center;
+    text-shadow: black;
+    vertical-align: middle;
 }
 
 .selected
@@ -20,6 +21,8 @@ nav
 
 .path
 {
-    height: 36px;
-    width: 100px;
+    text-align: center;
+    vertical-align: middle;
+    height: 30px;
+    width: 207px;
 }
