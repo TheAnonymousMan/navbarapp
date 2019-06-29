@@ -1,3 +1,5 @@
+// Don't Panic.
+
 import React from 'react';
 import Home from './Home';
 import About from './About';
@@ -9,44 +11,47 @@ class NavBar extends React.Component
   constructor(props)
   {
     super(props);
-    this.state = 
+    this.state =
     {
-      selectLink: 'home'
-    }
+      selectLink: false
+    };
   }
-
-  changeStyle = (selectedlink) =>
+  changeStyle = () =>
   {
-    // e.preventDefault();
-    this.setState({selectLink: selectedlink});
-    // this.selectLink = selectedlink;
-    console.log("Change should change. " + this.state.selectLink +" "+ typeof(this.state.selectLink));
+    this.setState({selectLink: !this.state.selectLink});
+    // Forcefully making a state change to cause the components to rerender.
+    console.log("Class should change. " + this.state.selectLink +" "+ typeof(this.state.selectLink));
   }
 
   render()
   {
-    return (
+    return ( 
       <Router>
         <div className='container'>
           <nav className='navbar'>
             
             <Link to='/'>
-              {/* Don't Panic! */}
-              <div                  
-                onClick={() => {this.changeStyle('home')}}
-                className={(this.state.selectLink === 'home') ? 'path selected' :'path'}
-                > Home </div></Link> | 
+              <div
+                className={(window.location.pathname === '/') ? 'path selected' :'path'}
+                // window.location.pathname seems to return only the url entered.
+                onClick={this.changeStyle} 
+                // The onClick seems useless, if we remove it, the colour stops changing on clicking.
+                // The setState method needs to be called so as to reset the location name. Why?
+                // React component won't rerender when you change window.location.pathname. 
+                // Only state changes will cause component to rerender. 
+                // Hence, we make a forceful change in the states.
+                > Home </div></Link> |                    
 
             <Link to='/about'>
               <div
-                className={this.state.selectLink === 'about' ? 'path selected' :'path'}
-                onClick={() => {this.changeStyle('about')}}
+                className={(window.location.pathname === '/about') ? 'path selected' :'path'}
+                onClick={this.changeStyle}
                 > About </div></Link> | 
 
             <Link to='/topics'>
               <div
-                className={this.state.selectLink === 'topics' ? 'path selected' :'path'}
-                onClick={() => {this.changeStyle('topics')}}
+                className={(window.location.pathname === '/topics') ? 'path selected' :'path'}
+                onClick={this.changeStyle} 
                 > Topics </div></Link>
           </nav>
           
