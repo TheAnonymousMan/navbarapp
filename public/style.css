@@ -13,12 +13,13 @@ nav
     text-align: center;
 }
 
-.pressed
+.selected
 {
     background-color: darkgray;
 }
 
-.notpressed
+.path
 {
-    background-color: none;
+    height: 36px;
+    width: 100px;
 }

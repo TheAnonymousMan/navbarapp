@@ -9,35 +9,18 @@ class NavBar extends React.Component
   constructor(props)
   {
     super(props);
-    this.state = {
-      usualStyle: this.normal
+    this.state = 
+    {
+      selectLink: 'home'
     }
-
   }
 
-  normal = {
-    height : 36,
-    width : 100
-  };
-
-  clicked = {
-    height : 36,
-    width : 100,
-    background: '#'
-  };
-
-  changeStyle = () =>
+  changeStyle = (selectedlink) =>
   {
-    //e.preventDefault();
-    this.setState({usualStyle: this.clicked});
-    console.log("Change should change." + this.state.usualStyle + typeof(this.state.usualStyle));
-  }
-
-  changeBackStyle = () =>
-  {
-    //e.preventDefault();
-    this.setState({usualStyle: this.normal});
-    console.log("Change should change back." + this.state.usualStyle + typeof(this.state.usualStyle))
+    // e.preventDefault();
+    this.setState({selectLink: selectedlink});
+    // this.selectLink = selectedlink;
+    console.log("Change should change. " + this.state.selectLink +" "+ typeof(this.state.selectLink));
   }
 
   render()
@@ -45,16 +28,26 @@ class NavBar extends React.Component
     return (
       <Router>
         <div className='container'>
-          
           <nav className='navbar'>
-            <Link to='/' className={ this.props.selected === this.props.className ? 'selected ' :'' }>
-              <div 
-                style={this.state.usualStyle} 
-                onMouseEnter={() => {this.changeStyle()}}
-                onMouseLeave={this.changeBackStyle}> Home </div></Link> | 
+            
+            <Link to='/'>
+              {/* Don't Panic! */}
+              <div                  
+                onClick={() => {this.changeStyle('home')}}
+                className={(this.state.selectLink === 'home') ? 'path selected' :'path'}
+                > Home </div></Link> | 
 
-            <Link to='/about' className={ this.props.selected === this.props.className ? 'selected ' :'' }><div style={this.normal}> About </div></Link> | 
-            <Link to='/topics'><div style={this.normal}> Topics </div></Link>
+            <Link to='/about'>
+              <div
+                className={this.state.selectLink === 'about' ? 'path selected' :'path'}
+                onClick={() => {this.changeStyle('about')}}
+                > About </div></Link> | 
+
+            <Link to='/topics'>
+              <div
+                className={this.state.selectLink === 'topics' ? 'path selected' :'path'}
+                onClick={() => {this.changeStyle('topics')}}
+                > Topics </div></Link>
           </nav>
           
           <hr/>
